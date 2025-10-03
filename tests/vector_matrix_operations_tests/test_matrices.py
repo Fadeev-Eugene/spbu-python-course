@@ -3,7 +3,11 @@ Matrix operations test module
 """
 
 import pytest
-from project.vector_matrix_operations.Matrix_oper import matrix_addition, matrix_multiplication, matrix_transpose
+from project.vector_matrix_operations.Matrix_oper import (
+    matrix_addition,
+    matrix_multiplication,
+    matrix_transpose,
+)
 
 
 def test_matrix_addition_basic():
@@ -26,9 +30,9 @@ def test_raise_matrix_addition():
     """Test addition of matrices with different sizes"""
     mat1 = [[1, 2, 3], [4, 5, 6]]
     mat2 = [[1, 2], [3, 4]]
-    with pytest.raises(ValueError) as excinfo:
+    with pytest.raises(ValueError) as exc_info:
         matrix_addition(mat1, mat2)
-    assert str(excinfo.value) == "Matrix should have same sizes"
+    assert str(exc_info.value) == "Matrix should have same sizes"
 
 
 def test_matrix_multiplication_basic():
@@ -59,9 +63,9 @@ def test_raise_matrix_multiplication():
     """Test multiplication of incompatible matrices"""
     mat1 = [[1, 2, 3]]
     mat2 = [[1, 2]]
-    with pytest.raises(ValueError) as excinfo:
+    with pytest.raises(ValueError) as exc_info:
         matrix_multiplication(mat1, mat2)
-    assert "columns" in str(excinfo.value) and "rows" in str(excinfo.value)
+    assert "columns" in str(exc_info.value) and "rows" in str(exc_info.value)
 
 
 def test_matrix_transpose_square():

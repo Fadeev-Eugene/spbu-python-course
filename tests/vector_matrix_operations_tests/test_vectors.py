@@ -4,7 +4,11 @@ Vector operations test module
 
 import math
 import pytest
-from project.vector_matrix_operations.Vector_oper import scalar_product, vector_length, angle_between_vectors
+from project.vector_matrix_operations.Vector_oper import (
+    scalar_product,
+    vector_length,
+    angle_between_vectors,
+)
 
 
 def test_scalar_product_basic():
@@ -25,9 +29,9 @@ def test_raise_scalar_product():
     """Test scalar product of two vectors with different lengths"""
     v1 = [1, 2, 3]
     v2 = [1, 2]
-    with pytest.raises(ValueError) as excinfo:
+    with pytest.raises(ValueError) as exc_info:
         scalar_product(v1, v2)
-    assert str(excinfo.value) == "Vectors should have same length"
+    assert str(exc_info.value) == "Vectors should have same length"
 
 
 def test_vector_length():
@@ -86,9 +90,9 @@ def test_raise_angle_different_lengths():
     """Test angle between two vectors with different lengths"""
     v1 = [1, 2, 3]
     v2 = [1, 2]
-    with pytest.raises(ValueError) as excinfo:
+    with pytest.raises(ValueError) as exc_info:
         angle_between_vectors(v1, v2)
-    assert str(excinfo.value) == "Vectors should have same length"
+    assert str(exc_info.value) == "Vectors should have same length"
 
 
 def test_raise_angle_zero_vector():
@@ -103,6 +107,6 @@ def test_raise_angle_invalid_format():
     """Test angle with invalid format parameter"""
     v1 = [1, 0]
     v2 = [0, 1]
-    with pytest.raises(SyntaxError) as excinfo:
+    with pytest.raises(SyntaxError) as exc_info:
         angle_between_vectors(v1, v2, "invalid")
-    assert "form=[" in str(excinfo.value)
+    assert "form=[" in str(exc_info.value)

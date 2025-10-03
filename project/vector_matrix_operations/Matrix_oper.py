@@ -13,7 +13,9 @@ def matrix_addition(mat1, mat2):
 
 def matrix_multiplication(mat1, mat2):
     if len(mat1[0]) != len(mat2):
-        raise ValueError("The number of columns in the first matrix must equal the number of rows in the other matrix.")
+        raise ValueError(
+            "The number of columns in the first matrix must equal the number of rows in the other matrix."
+        )
 
     result = []
     for i in range(len(mat1)):
